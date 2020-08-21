@@ -1,0 +1,132 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+html {
+    background-image: url("../img/mtfuji.jpg");
+    background-attachment: fixed;
+}
+body p {
+    margin-bottom: 1%;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 1%;
+}
+h2 {
+    margin-bottom: 1%;
+}
+h3 {
+    margin-bottom: 1%;
+    text-align: center;
+}
+header {
+    background-color: #393f4d;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+}
+#menu {
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+ul {
+    display: flex;
+}
+li {
+    margin-right: 40px;
+    font-size: 30px;
+    font-weight: bold;
+    list-style: none;
+}
+#onglets {
+    color: #d4d4dc;
+    text-decoration: none;
+}
+#onglets:hover {
+    color: white;
+}
+#body {
+    margin: 100px 20px 20px 20px;
+    padding: 20px 20px 20px 20px;
+    background-color: rgba(255,255,255,0.6);
+    min-height: calc(100vh - 240px);
+}
+#headerdeconnexion {
+    display: flex;
+    align-items: center;
+}
+#intro {
+    text-align: center;
+    margin-bottom: 30px;
+}
+#footer {
+    background-color: #393f4d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+#billets {
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: rgba(255,255,255,0.8);
+}
+#billet {
+    margin-bottom: 2%;
+}
+#commentaires {
+    margin-bottom: 2%;
+}
+#commentaire_post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#inscription {
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+}
+#textinscription {
+    margin-right: 1%;
+    font-size: 19px;
+}
+#textconnexion {
+    margin-right: 1%;
+    font-size: 17px;
+}
+#deja {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+}
+#deconnexiondecoration {
+    text-decoration: none;
+    color: #d4d4dc;
+    font-weight: bold;
+}
+input {
+    margin-bottom: 1%;
+}
+select {
+    margin-bottom: 1%;
+}
+submit {
+    margin-bottom: 1%;
+}

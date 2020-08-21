@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Mon super site</h1>
+
+    <p id="intro">
+        Site crée avec Symfony.<br />
+        <strong>Le tout est trouvable sur mon Github : @Hashiix</strong><br />
+    </p>
+
+    <form method="post" action="minichat_post.php">
+
+        <p>Pseudo : <input type="text" name="pseudo" required maxlength="30"></p>
+
+        <p>Message : <input type="text" name="message" maxlength="120" /> (BBCode dispo : gras ( <strong>[b][/b]</strong>), couleurs ( [color=(<span style="color:red">red</span>|<span style="color:green"></span>>|<span style="color:blue">blue</span>|<span style="color:yellow">yellow</span>|<span style="color:purple">purple</span>|<span style="color:olive">olive</span>)][/color] ) et italique ( <em>[i][/i]</em> )). </p>
+
+        <input type="submit" value="Envoyer" />
+
+    </form>
+
+    <form method="post" action="minichat.php">
+        <input type="submit" value="Rafraichir" />
+    </form>
+
+{% endblock %}
