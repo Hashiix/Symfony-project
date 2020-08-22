@@ -19,13 +19,16 @@ class MinichatController extends AbstractController
         if ($request->isMethod('POST')) {
             $data = $request->request->all();
 
-            $message = new Message;
-            $message->setName($data['name']);
-            $message->setMessage($data['message']);
-            $message->setDate(new \DateTime());
+            if ($this->isCsrfTokenValid('message_created', $data['token']))
+            {
+                $message = new Message;
+                $message->setName($data['name']);
+                $message->setMessage($data['message']);
+                $message->setDate(new \DateTime());
 
-            $em->persist($message);
-            $em->flush();
+                $em->persist($message);
+                $em->flush();
+            }
         }
         return $this->render('minichat/index.html.twig', ['messages' => $repo->findBy(array(), array('id'=>'DESC'), 10)]);
     }

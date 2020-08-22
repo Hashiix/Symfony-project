@@ -10,6 +10,9 @@
     </p>
 
     <form method="post">
+
+        <input type="hidden" name="token" value="{{ csrf_token('message_created') }}">
+
         <div id="minichatname">
             <label for="name">Pseudo :</label><br/>
             <input type="text" id="name" name="name" required maxlength="20">
