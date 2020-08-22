@@ -28,6 +28,7 @@ class Message
     private $message;
 
     /**
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="datetime")
      */
     private $date;
