@@ -14,20 +14,19 @@
         <input type="hidden" name="token" value="{{ csrf_token('message_created') }}">
 
         <div id="minichatname">
-            <label for="name">Pseudo :</label><br/>
+            <label for="name">Pseudo</label><br/>
             <input type="text" id="name" name="name" required maxlength="20">
         </div>
         <div id="minichatmessage">
-            <label for="message">Message :</label><br/>
+            <label for="message">Message</label><br/>
             <textarea id="message" name="message" rows="5" cols="60" required maxlength="120"></textarea><br/>
             <input type="submit" value="Envoyer" />
         </div>
-        <p id="bbcode">(BBCode dispo : gras ( <strong>[b][/b]</strong>), couleurs ( [color=(<span style="color:red">red</span>|<span style="color:green"></span>>|<span style="color:blue">blue</span>|<span style="color:yellow">yellow</span>|<span style="color:purple">purple</span>|<span style="color:olive">olive</span>)][/color] ) et italique ( <em>[i][/i]</em> )). </p>
     </form>
 
     <div id="minichat">
         {% for message in messages %}
-            {{ message.date|date('d-m-Y H:i') }} - <strong>{{ message.name|escape }} :</strong> {{ message.message|escape }}<br/>
+            {{ message.date|date('d-m-Y H:i') }} - <strong>{{ message.name }} :</strong> {{ message.message|escape('html') }}<br/>
         {% endfor %}
     </div>
 

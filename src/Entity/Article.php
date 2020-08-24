@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\MessageRepository;
+use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=MessageRepository::class)
+ * @ORM\Entity(repositoryClass=ArticleRepository::class)
  */
-class Message
+class Article
 {
     /**
      * @ORM\Id()
@@ -18,17 +18,16 @@ class Message
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $title;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $message;
+    private $content;
 
     /**
-     *
      * @ORM\Column(type="datetime")
      */
     private $date;
@@ -38,26 +37,26 @@ class Message
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getTitle(): ?string
     {
-        return $this->name;
+        return $this->title;
     }
 
-    public function setName(string $name): self
+    public function setTitle(string $title): self
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
 
-    public function getMessage(): ?string
+    public function getContent(): ?string
     {
-        return $this->message;
+        return $this->content;
     }
 
-    public function setMessage(string $message): self
+    public function setContent(string $content): self
     {
-        $this->message = $message;
+        $this->content = $content;
 
         return $this;
     }
