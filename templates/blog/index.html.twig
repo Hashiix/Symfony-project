@@ -10,7 +10,7 @@
             <div id="article">
                 {{ article.title }} - {{ article.date|date('d-m-Y H:i') }} <br/>
                 {{ article.content }} <br/>
-                <a href="/comments/articleid={{ article.id }}">Commentaires</a>
+                <a href="{{ path('app_blog_comments') }}">Commentaires</a>
             </div>
         {% endfor %}
 

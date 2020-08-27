@@ -9,20 +9,18 @@
         <strong>Le tout est trouvable sur mon Github : @Hashiix</strong><br />
     </p>
 
-    <form method="post">
+    <div>
+        {% form_theme myForm 'bootstrap_4_layout.html.twig' %}
 
-        <input type="hidden" name="token" value="{{ csrf_token('message_created') }}">
+        {{ form_start(myForm) }}
 
-        <div id="minichatname">
-            <label for="name">Pseudo</label><br/>
-            <input type="text" id="name" name="name" required maxlength="20">
-        </div>
-        <div id="minichatmessage">
-            <label for="message">Message</label><br/>
-            <textarea id="message" name="message" rows="5" cols="60" required maxlength="120"></textarea><br/>
-            <input type="submit" value="Envoyer" />
-        </div>
-    </form>
+        {{ form_row(myForm.name, {'attr': {'placeholder': "Votre pseudo"}, 'label': "Pseudo"}) }}
+        {{ form_row(myForm.message, {'attr': {'placeholder': "Votre message", 'rows': 5, 'cols': 60}}) }}
+
+        <button type="submit" class="btn btn-success">Envoyer</button>
+
+        {{ form_end(myForm) }}
+    </div>
 
     <div id="minichat">
         {% for message in messages %}
@@ -31,7 +29,7 @@
     </div>
 
     <form>
-            <input type="submit" value="Rafraichir">
+            <input type="submit" class="btn btn-success" value="Rafraichir">
     </form>
 
 {% endblock %}

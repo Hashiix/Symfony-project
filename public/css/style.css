@@ -50,14 +50,14 @@ li {
 
 /* --Body-- */
 
+body {
+    background-color: none;
+}
 #body {
     margin: 100px 20px 20px 20px;
     padding: 20px 20px 20px 20px;
     background-color: rgba(255,255,255,0.6);
     min-height: calc(100vh - 240px);
-}
-body p {
-    margin-bottom: 1%;
 }
 h1 {
     text-align: center;
@@ -77,23 +77,11 @@ h3 {
 
 /* --Minichat-- */
 
-#minichatname {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-#minichatmessage {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 2%;
-}
 #bbcode {
     text-align: center;
 }
 #minichat {
     margin-bottom: 1%;
-    background-color: rgba(255,255,255,0.8);
 }
 
 /* --Blog-- */

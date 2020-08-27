@@ -6,30 +6,40 @@ use App\Entity\Message;
 use App\Repository\MessageRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MinichatController extends AbstractController
 {
     /**
-     * @Route("/", name="minichat", methods={"POST", "GET"})
+     * @Route("/", methods={"POST", "GET"})
      */
     public function index(MessageRepository $repo, Request $request, EntityManagerInterface $em)
     {
-        if ($request->isMethod('POST')) {
-            $data = $request->request->all();
+        $message = new Message;
 
-            if ($this->isCsrfTokenValid('message_created', $data['token']))
-            {
-                $message = new Message;
-                $message->setName($data['name']);
-                $message->setMessage($data['message']);
-                $message->setDate(new \DateTime());
+        $form = $this->createFormBuilder($message)
+            ->add('name')
+            ->add('message')
+            ->getForm()
+        ;
 
-                $em->persist($message);
-                $em->flush();
-            }
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $message->setDate(new \DateTime());
+
+            $em->persist($message);
+            $em->flush();
+
         }
-        return $this->render('minichat/index.html.twig', ['messages' => $repo->findBy(array(), array('id'=>'DESC'), 10)]);
+
+        return $this->render('minichat/index.html.twig', [
+            'messages' => $repo->findBy(array(), array('id'=>'DESC'), 10),
+            'myForm' => $form->createView()
+        ]);
     }
 }

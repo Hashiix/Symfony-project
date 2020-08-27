@@ -22,10 +22,11 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/comments/", methods={"GET", "POST"})
+     * @Route("/comments", methods={"GET", "POST"})
      */
-    public function comments()
+    public function comments(ArticleRepository $articleRepo, CommentRepository $commentRepo)
     {
-        return $this->render('blog/comments.html.twig');
+        return $this->render('blog/comments.html.twig',
+            ['articles' => $articleRepo->findBy(array(), array('id'=>'DESC'), 10)]);
     }
 }
