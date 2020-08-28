@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
+use App\Entity\Comment;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BlogController extends AbstractController
@@ -24,9 +24,30 @@ class BlogController extends AbstractController
     /**
      * @Route("/comments", methods={"GET", "POST"})
      */
-    public function comments(ArticleRepository $articleRepo, CommentRepository $commentRepo)
+    public function comments(ArticleRepository $articleRepo, CommentRepository $commentRepo, EntityManagerInterface $em, Request $request)
     {
-        return $this->render('blog/comments.html.twig',
-            ['articles' => $articleRepo->findBy(array(), array('id'=>'DESC'), 10)]);
+        $comment = new Comment;
+
+        $form = $this->createFormBuilder($comment)
+            ->add('author')
+            ->add('comment')
+            ->getForm()
+        ;
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setArticleId($_GET['id']);
+            $comment->setDate(new \DateTime());
+
+            $em->persist($comment);
+            $em->flush();
+        }
+
+        return $this->render('blog/comments.html.twig', [
+            'article' => $articleRepo->find($_GET['id']),
+            'comments' => $commentRepo->findBy(array('articleId' => $_GET['id']), array('id'=>'DESC'), 10),
+            'commentForm' => $form->createView(),
+        ]);
     }
 }

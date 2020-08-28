@@ -9,18 +9,17 @@
         <strong>Le tout est trouvable sur mon Github : @Hashiix</strong><br />
     </p>
 
-    <div>
-        {% form_theme myForm 'bootstrap_4_layout.html.twig' %}
+    {% form_theme chatForm 'bootstrap_4_layout.html.twig' %}
 
-        {{ form_start(myForm) }}
+    {{ form_start(chatForm) }}
 
-        {{ form_row(myForm.name, {'attr': {'placeholder': "Votre pseudo"}, 'label': "Pseudo"}) }}
-        {{ form_row(myForm.message, {'attr': {'placeholder': "Votre message", 'rows': 5, 'cols': 60}}) }}
+    {{ form_row(chatForm.name, {'attr': {'placeholder': "Votre pseudo"}, 'label': "Pseudo"}) }}
+    {{ form_row(chatForm.message, {'attr': {'placeholder': "Votre message", 'rows': 5, 'cols': 60}}) }}
 
+    <div id="submit">
         <button type="submit" class="btn btn-success">Envoyer</button>
-
-        {{ form_end(myForm) }}
     </div>
+    {{ form_end(chatForm) }}
 
     <div id="minichat">
         {% for message in messages %}

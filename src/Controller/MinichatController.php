@@ -34,12 +34,11 @@ class MinichatController extends AbstractController
 
             $em->persist($message);
             $em->flush();
-
         }
 
         return $this->render('minichat/index.html.twig', [
-            'messages' => $repo->findBy(array(), array('id'=>'DESC'), 10),
-            'myForm' => $form->createView()
+            'messages' => $repo->findBy(array(), array('id'=>'DESC'), 15),
+            'chatForm' => $form->createView()
         ]);
     }
 }

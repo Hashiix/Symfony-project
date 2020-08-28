@@ -4,15 +4,36 @@
 
     <h1>Mon super blog !</h1>
 
-    <div id="articles">
+    <a id="backdecoration" href="{{ path('app_blog_index') }}">⬅ Revenir au blog</a>
 
-        {% for article in articles %}
-            <div id="article">
-                {{ article.title }} - {{ article.date|date('d-m-Y H:i') }} <br/>
-                {{ article.content }} <br/>
+    <div id="articles">
+        <div id="article">
+            <strong>{{ article.title }} - {{ article.date|date('d-m-Y H:i') }}</strong><br/>
+            {{ article.content }} <br/>
+        </div>
+    </div>
+
+    <div id="comments">
+        <h2>Commentaires</h2>
+
+        {% for comment in comments %}
+            <div id="comment">
+                <strong>{{ comment.author }} - {{ article.date|date('d-m-Y H:i') }}</strong><br/>
+                {{ comment.comment }} <br/>
             </div>
         {% endfor %}
-
     </div>
+
+    {% form_theme commentForm 'bootstrap_4_layout.html.twig' %}
+
+    {{ form_start(commentForm) }}
+
+    {{ form_row(commentForm.author, {'attr': {'placeholder': "Votre pseudo"}, 'label': "Pseudo"}) }}
+    {{ form_row(commentForm.comment, {'attr': {'placeholder': "Votre commentaire", 'rows': 5, 'cols': 60}, 'label': "Commentaire"}) }}
+
+    <div id="submit">
+        <button type="submit" class="btn btn-success">Envoyer</button>
+    </div>
+    {{ form_end(commentForm) }}
 
 {% endblock %}
