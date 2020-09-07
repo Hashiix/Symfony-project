@@ -5,15 +5,15 @@
     <h1>Mon super blog !</h1>
 
     <div id="articles">
-
-        {% for article in articles %}
-            <div id="article">
-                <strong>{{ article.title }} - {{ article.date|date('d-m-Y H:i') }}</strong><br/>
-                {{ article.content }} <br/>
-                <a href="{{ path('app_blog_comments') }}?id={{ article.id }}">Commentaires</a>
-            </div>
-        {% endfor %}
-
+            {% for article in articles %}
+                <div id="article">
+                    <strong>{{ article.title }} - {{ article.date|date('d-m-Y H:i') }}</strong><br/>
+                    {{ article.content }} <br/>
+                    <a href="{{ path('app_blog_comments') }}?id={{ article.id }}">Commentaires</a>
+                </div>
+            {% else %}
+                <p id="intro">Il n'y a aucun article pour le moment.</p>
+            {% endfor %}
     </div>
 
 {% endblock %}

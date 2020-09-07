@@ -15,12 +15,13 @@
 
     <div id="comments">
         <h2>Commentaires</h2>
-
         {% for comment in comments %}
             <div id="comment">
                 <strong>{{ comment.author }} - {{ article.date|date('d-m-Y H:i') }}</strong><br/>
                 {{ comment.comment }} <br/>
             </div>
+        {% else %}
+            Il n'y a aucun commentaire pour le moment, soyez le premier à en écrire un !
         {% endfor %}
     </div>
 

@@ -24,6 +24,8 @@
     <div id="minichat">
         {% for message in messages %}
             {{ message.date|date('d-m-Y H:i') }} - <strong>{{ message.name }} :</strong> {{ message.message|escape('html') }}<br/>
+        {% else %}
+            Il n'y a aucun message pour l'instant, soyez le premier à en écrire un.
         {% endfor %}
     </div>
 
