@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MinichatController extends AbstractController
 {
     /**
-     * @Route("/", methods={"POST", "GET"})
+     * @Route("/minichat", methods={"POST", "GET"})
      */
     public function index(MessageRepository $repo, Request $request, EntityManagerInterface $em)
     {

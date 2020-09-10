@@ -2,13 +2,6 @@
 
 {% block body %}
 
-    <h1>Mon super site</h1>
-
-    <p id="intro">
-        Site crée avec Symfony.<br />
-        <strong>Le tout est trouvable sur mon Github : @Hashiix</strong><br />
-    </p>
-
     {% form_theme chatForm 'bootstrap_4_layout.html.twig' %}
 
     {{ form_start(chatForm) }}
@@ -17,7 +10,7 @@
     {{ form_row(chatForm.message, {'attr': {'placeholder': "Votre message", 'rows': 5, 'cols': 60}}) }}
 
     <div id="submit">
-        <button type="submit" class="btn btn-success">Envoyer</button>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
     </div>
     {{ form_end(chatForm) }}
 
@@ -30,7 +23,7 @@
     </div>
 
     <form>
-            <input type="submit" class="btn btn-success" value="Rafraichir">
+            <input type="submit" class="btn btn-primary" value="Rafraichir">
     </form>
 
 {% endblock %}

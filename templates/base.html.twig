@@ -3,20 +3,23 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-sclae=1, shrink-to-fit=no">
-        <title>{% block title %}Mon super site !{% endblock %}</title>
+        <title>{% block title %}Tiago Vieira Braz | Développeur Web{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="../../css/style.css">
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
             <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+            <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         {% endblock %}
     </head>
         <header>
             <nav id="menu">
                 <ul>
-                    <li><a id="tabs" href="{{ path('app_minichat_index') }}">Accueil</a></li>
+                    <li><a id="tabs" href="{{ path('app_index_index') }}">Accueil</a></li>
                 </ul>
 
                 <ul>
+                    <li><a id="tabs" href="{{ path('app_minichat_index') }}">Minichat</a></li>
                     <li><a id="tabs" href="{{ path('app_blog_index') }}">Blog</a></li>
                     <li><a id="tabs" href="{{ path('app_login_index') }}">Mon compte</a></li>
                 </ul>
@@ -30,8 +33,6 @@
             </div>
         </body>
 
-        <footer id="footer">
-            <span style="color: #d4d4dc">© Copyright 2020, tous droits réservés.</span>
-        </footer>
+
     {% block javascripts %}{% endblock %}
 </html>

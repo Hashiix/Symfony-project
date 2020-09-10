@@ -2,8 +2,6 @@
 
 {% block body %}
 
-    <h1>Mon super blog !</h1>
-
     <a id="backdecoration" href="{{ path('app_blog_index') }}">⬅ Revenir au blog</a>
 
     <div id="articles">
@@ -33,7 +31,7 @@
     {{ form_row(commentForm.comment, {'attr': {'placeholder': "Votre commentaire", 'rows': 5, 'cols': 60}, 'label': "Commentaire"}) }}
 
     <div id="submit">
-        <button type="submit" class="btn btn-success">Envoyer</button>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
     </div>
     {{ form_end(commentForm) }}
 
