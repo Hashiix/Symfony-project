@@ -4,12 +4,22 @@ namespace App\Entity;
 
 use App\Repository\MemberRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=MemberRepository::class)
+ * @UniqueEntity(
+ *     fields={"email", "username"},
+ *     message="L'email que vous avez indiqué est déjà utilisé !"
+ * )
+ * @UniqueEntity(
+ *     fields={"username"},
+ *     message="Le pseudo que vous avez indiqué est déjà utilisé !"
+ * )
  */
-class Member
+class Member implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -21,25 +31,24 @@ class Member
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(
      *     min= "8",
-     *     max= "",
+     *     max= "50",
      *     minMessage= "Votre mot de passe doit faire au moins 8 caractères",
      *     maxMessage= "Votre mot de passe ne doit pas faire plus de 50 caractères",
      *     )
-     * @Assert\EqualTo(
-     *     propertyPath= "passwordVerify")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
      */
-    private $mail;
+    private $email;
 
     /**
      * @ORM\Column(type="datetime")
@@ -48,7 +57,9 @@ class Member
 
     /**
      * @Assert\EqualTo(
-     *     propertyPath= "password")
+     *     propertyPath= "password",
+     *     message="Vous n'avez pas tapé le même mot de passe"
+     * )
      */
     public $passwordVerify;
 
@@ -57,14 +68,14 @@ class Member
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getUsername(): ?string
     {
-        return $this->name;
+        return $this->username;
     }
 
-    public function setName(string $name): self
+    public function setUsername(string $username): self
     {
-        $this->name = $name;
+        $this->username = $username;
 
         return $this;
     }
@@ -81,14 +92,14 @@ class Member
         return $this;
     }
 
-    public function getMail(): ?string
+    public function getEmail(): ?string
     {
-        return $this->mail;
+        return $this->email;
     }
 
-    public function setMail(string $mail): self
+    public function setEmail(string $email): self
     {
-        $this->mail = $mail;
+        $this->email = $email;
 
         return $this;
     }
@@ -103,5 +114,18 @@ class Member
         $this->registration_date = $registration_date;
 
         return $this;
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    public function getSalt()
+    {
+    }
+
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
     }
 }

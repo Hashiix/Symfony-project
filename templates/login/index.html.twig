@@ -2,21 +2,24 @@
 
 {% block body %}
 
-    {% form_theme signInForm 'bootstrap_4_layout.html.twig' %}
+    <form action="{{ path('app_login_login') }}" method="post">
+        <div class="form-group">
+            Pseudo
+            <input placeholder="Votre pseudo" required name="_username"
+            type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            Mot de passe
+            <input placeholder="Votre mot de passe" required name="_password"
+            type="password" class="form-control">
+        </div>
 
-    {{ form_start(signInForm) }}
+        <div id="submit">
+            <button type="submit" class="btn btn-info">Connexion</button>
+        </div>
 
-    {{ form_row(signInForm.name, {'attr': {'placeholder': "Votre pseudo"}, 'label': "Pseudo"}) }}
-    {{ form_row(signInForm.password, {'attr': {'placeholder': "Votre mot de passe"}, 'label': "Mot de passe"}) }}
-    {{ form_row(signInForm.passwordVerify, {'attr': {'placeholder': "Confirmez votre mot de passe"}, 'label': "Confirmation du mot de passe"}) }}
-    {{ form_row(signInForm.mail, {'attr': {'placeholder': "Votre adresse mail"}, 'label': "Adresse mail"}) }}
+    </form>
 
-    <div id="submit">
-        <button type="submit" class="btn btn-success">S'inscrire</button>
-    </div>
-
-    {{ form_end(signInForm) }}
-
-    <p id="intro">Vous avez déjà un compte ? <a href={{ path('app_login_login') }}>Connectez-vous</a></p>
+    <p id="already">Vous n'êtes pas encore inscrit ?<a href='{{ path('app_signin_index') }}'>Inscrivez-vous !</a></p>
 
 {% endblock %}
