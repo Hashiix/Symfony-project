@@ -24,13 +24,15 @@ header {
     padding: 1%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
 ul {
     display: flex;
+    margin-right: 30px;
 }
 li {
-    margin-right: 70px;
+    margin-right: 40px;
     font-size: 30px;
     font-weight: bold;
 }
@@ -55,7 +57,9 @@ li a {
 }
 #headerdisconnect {
     display: flex;
+    justify-content: center;
     align-items: center;
+    margin-left: 16%;
 }
 
 /* --Body-- */
@@ -93,6 +97,7 @@ h2 {
     font-size: 40px;
     font-weight: bold;
     animation: Slide_Up 1s .5s forwards;
+    margin-bottom: .5rem;
 }
 #line {
     width: 60%;

@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\MemberRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,9 +12,17 @@ class LoginController extends AbstractController
     /**
      * @Route("/connexion", methods={"GET", "POST"})
      */
-    public function login(EntityManagerInterface $em, Request $request, MemberRepository $repo)
+    public function login(AuthenticationUtils $authenticationUtils)
     {
-        return $this->render('login/index.html.twig');
+        $error = $authenticationUtils->getLastAuthenticationError();
+
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+
+        return $this->render('login/index.html.twig', [
+            'last_username' => $lastUsername,
+            'error'         => $error,
+        ]);
     }
 
     /**

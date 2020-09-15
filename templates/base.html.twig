@@ -18,12 +18,12 @@
                     <li><a id="tabs" href="{{ path('app_index_index') }}">Accueil</a></li>
                 </ul>
 
-                {% if not app.user %}
-                {% else %}
-                <div id="disconnectdecoration">
-                    Bonjour, {{ app.user }} (<a href="{{ path('app_login_logout') }}">Déconnexion</a>)
+                <div id="headerdisconnect">
+                    {% if not app.user %}
+                    {% else %}
+                        Bonjour {{ app.user.username }} (<a href="{{ path('app_login_logout') }}">se déconnecter</a>)
+                    {% endif %}
                 </div>
-                {% endif %}
 
                 <ul>
                     <li><a id="tabs" href="{{ path('app_minichat_index') }}">Minichat</a></li>

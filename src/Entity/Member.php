@@ -76,7 +76,6 @@ class Member implements UserInterface
     public function setUsername(string $username): self
     {
         $this->username = $username;
-
         return $this;
     }
 
@@ -122,6 +121,7 @@ class Member implements UserInterface
 
     public function getSalt()
     {
+        return null;
     }
 
     public function getRoles()

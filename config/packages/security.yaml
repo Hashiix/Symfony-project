@@ -1,15 +1,14 @@
 security:
     encoders:
         App\Entity\Member:
-            algorithm: bcrypt
+            algorithm: auto
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        users_in_memory: { memory: null }
-        in_database:
+        users:
             entity:
                 class: App\Entity\Member
-                property: email, username
+                property: username
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -17,7 +16,7 @@ security:
         main:
             anonymous: true
             lazy: true
-            provider: in_database
+            provider: users
 
             form_login:
                 login_path: app_login_login
