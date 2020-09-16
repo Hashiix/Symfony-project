@@ -74,6 +74,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
+  font-size: max(.8, .6vw);
   margin-top: 0;
 }
 
@@ -96,7 +97,7 @@ ol,
 ul,
 dl {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 ol ol,
@@ -218,12 +219,6 @@ caption {
 th {
   text-align: inherit;
 }
-
-label {
-  display: inline-block;
-  margin-bottom: 0.5rem;
-}
-
 button {
   border-radius: 0;
 }
@@ -358,10 +353,6 @@ h1, h2, h3, h4, h5, h6,
 
 h1, .h1 {
   font-size: 2.5rem;
-}
-
-h2, .h2 {
-  font-size: 2rem;
 }
 
 h3, .h3 {

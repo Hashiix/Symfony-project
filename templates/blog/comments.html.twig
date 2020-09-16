@@ -6,20 +6,20 @@
 
     <div id="articles">
         <div id="article">
-            <strong>{{ article.title }} - {{ article.date|date('d-m-Y H:i') }}</strong><br/>
-            {{ article.content }} <br/>
+            <p><strong>{{ article.title }} - {{ article.date|date('d-m-Y H:i') }}</strong></p><br/>
+            <p>{{ article.content }}</p> <br/>
         </div>
     </div>
 
     <div id="comments">
-        <h2>Commentaires</h2>
+        <h2><strong>Commentaires</strong></h2>
         {% for comment in comments %}
             <div id="comment">
-                <strong>{{ comment.author }} - {{ article.date|date('d-m-Y H:i') }}</strong><br/>
-                {{ comment.comment }} <br/>
+                <p><strong>{{ comment.author }} - {{ article.date|date('d-m-Y H:i') }}</strong></p><br/>
+                <p>{{ comment.comment }}</p> <br/>
             </div>
         {% else %}
-            Il n'y a aucun commentaire pour le moment, soyez le premier à en écrire un !
+            <p>Il n'y a aucun commentaire pour le moment, soyez le premier à en écrire un !</p>
         {% endfor %}
     </div>
 

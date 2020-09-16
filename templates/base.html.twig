@@ -2,7 +2,7 @@
 <html lang="{{ app.request.locale }}">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-sclae=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Tiago Vieira Braz | Développeur Web{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="../../css/style.css">
@@ -13,19 +13,19 @@
         {% endblock %}
     </head>
         <header>
+            <label for="toggle" id="burgerlabel">&#9776;</label>
+            <input type="checkbox" id="toggle"/>
             <nav id="menu">
-                <ul>
+                <ul id="burger">
                     <li><a id="tabs" href="{{ path('app_index_index') }}">Accueil</a></li>
                 </ul>
-
-                <div id="headerdisconnect">
+                <div id="headerdisconnect burger">
                     {% if not app.user %}
                     {% else %}
-                        Bonjour {{ app.user.username }} (<a href="{{ path('app_login_logout') }}">se déconnecter</a>)
+                        <p>Bonjour {{ app.user.username }} (<a href="{{ path('app_login_logout') }}">se déconnecter</a>)</p>
                     {% endif %}
                 </div>
-
-                <ul>
+                <ul id="burger">
                     <li><a id="tabs" href="{{ path('app_minichat_index') }}">Minichat</a></li>
                     <li><a id="tabs" href="{{ path('app_blog_index') }}">Blog</a></li>
                     <li><a id="tabs" href="{{ path('app_login_login') }}">Mon compte</a></li>
